@@ -1,0 +1,38 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby : 
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "boxcutter/ubuntu1604-desktop"
+  config.vm.hostname = "vagrant-vcloud-box"
+
+  config.vm.provider "virtualbox" do |v|
+    v.gui = true
+    v.memory = 2000
+    v.cpus = 2
+    v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+    v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant", "1"]
+    v.customize ["modifyvm", :id, "--graphicscontroller", "vboxvga"]
+    v.customize ["modifyvm", :id, "--vram", "128"]
+    # Enabling the I/O APIC is required for 64-bit guest operating systems, especially Windows Vista;
+    # it is also required if you want to use more than one virtual CPU in a VM.
+    v.customize ["modifyvm", :id, "--ioapic", "on"]
+    # Enable the use of hardware virtualization extensions (Intel VT-x or AMD-V) in the processor of your host system
+    v.customize ["modifyvm", :id, "--hwvirtex", "on"]
+    # Enable, if Guest Additions are installed, whether hardware 3D acceleration should be available
+    v.customize ["modifyvm", :id, "--accelerate3d", "on"]
+  end
+
+  config.vm.provision "shell", path: "scripts/fix-locale.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/patch-all.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-additional-apps.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-ansible.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-awscli.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-gcloud.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-vscode.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-chrome.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-win7-themes.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/apply-gnome-settings-and-restart-lightdm.sh", privileged: false
+
+  config.ssh.forward_agent = true
+end
