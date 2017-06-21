@@ -8,35 +8,27 @@ An all-in-one to play with various clould platforms development of Infrastructur
 boxcutter/ubuntu1604-desktop
 
 # Apps
-awscli
-
-gcloud
-
-Ansible
-
-Microsoft Visual Studio Code
-
-Chrome
+* awscli
+* gcloud
+* azure
+* kubectl
+* Ansible
+* Microsoft Visual Studio Code
+* Chrome
 
 
-git
-
-terminator
-
-jq
-
-curl
-
-pip
+* git
+* terminator
+* jq
+* curl
+* pip
+* npm
 
 
-Win7 themes
-
-Win7 Icons
-
-Hack font
-
-gnome-session-flashback
+* Win7 themes
+* Win7 Icons
+* Hack font
+* gnome-session-flashback
 
 # Tweaks
 Various gnome/unity tweaks to make it more Wintel-user (Linux noob) friendly.

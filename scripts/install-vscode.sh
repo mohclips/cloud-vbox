@@ -16,3 +16,9 @@ Type=Link
 URL=https://code.visualstudio.com/docs/setup/linux
 Icon=text-html
 EOF
+
+code --install-extension donjayamanne.python
+code --install-extension wholroyd.jinja
+code --install-extension haaaad.ansible
+code --install-extension aws-scripting-guy.cform
+

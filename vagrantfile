@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/install-ansible.sh", privileged: true
   config.vm.provision "shell", path: "scripts/install-awscli.sh", privileged: true
   config.vm.provision "shell", path: "scripts/install-gcloud.sh", privileged: true
+  config.vm.provision "shell", path: "scripts/install-azure.sh", privileged: true
   config.vm.provision "shell", path: "scripts/install-vscode.sh", privileged: true
   config.vm.provision "shell", path: "scripts/install-chrome.sh", privileged: true
   config.vm.provision "shell", path: "scripts/install-win7-themes.sh", privileged: true
